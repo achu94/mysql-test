@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const db = require("../config/mysql");
+const kurzmitteilung = require("../utils/kurzmitteilung");
 
 const router = Router();
 
@@ -18,14 +19,9 @@ router.get("/wa", (req, res, next) => {
 });
 
 router.get("/", (req, res, next) => {
-  db.getConnection((err, conn) => {
-    conn.query("SELECT 1 + 1 AS solution", (err, results) => {
-      if (err) throw err;
-
-      console.log(results);
-      res.send(results);
-    });
-  });
+  return kurzmitteilung.print_all_promis().then( (data) => {
+    return res.send(data);
+  }).catch(next);
 });
 
 router.get("/get", (req, res, next) => {
