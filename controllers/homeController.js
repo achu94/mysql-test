@@ -1,8 +1,14 @@
+const path = require('path');
+
 const { Router } = require("express");
 const db = require("../config/mysql");
-const kurzmitteilung = require("../utils/kurzmitteilung");
 
 const router = Router();
+
+router.get("/", (req, res, next) => {
+    return res.sendFile(path.join(__dirname, '../index.html'));
+});
+
 
 router.get("/wa", (req, res, next) => {
   const dog = { name: rnd_name(getRandomInt(7)), age: getRandomInt(20), rasa: rnd_name(getRandomInt(10)) };
@@ -18,11 +24,6 @@ router.get("/wa", (req, res, next) => {
   });
 });
 
-router.get("/", (req, res, next) => {
-  return kurzmitteilung.print_all_promis().then( (data) => {
-    return res.send(data);
-  }).catch(next);
-});
 
 router.get("/get", (req, res, next) => {
   db.getConnection((err, conn) => {
