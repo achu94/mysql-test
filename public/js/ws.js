@@ -1,5 +1,7 @@
+const connection = new WebSocket("ws://localhost:3000/");
+const conn_test = 'Ping';
+
 (function websocketInit() {
-  const connection = new WebSocket("ws://localhost:5001/");
 
   // When the connection is open, send some data to the server
   connection.onopen = function () {
@@ -9,8 +11,7 @@
       }
 
       setTimeout(() => {
-        connection.send("Ping"); // Send the message 'Ping' to the server
-
+        connection.send(conn_test); // Send the message 'Ping' to the server
         looper();
       }, 1000);
     };
@@ -26,6 +27,8 @@
   // Log messages from the server
   connection.onmessage = function (e) {
     console.log("Server: " + e.data);
+
+    if(e.data !== conn_test) apeend_chat_bubble_message(e.data, 'left');
   };
 })();
 

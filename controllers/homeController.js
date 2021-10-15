@@ -9,7 +9,6 @@ router.get("/", (req, res, next) => {
     return res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-
 router.get("/wa", (req, res, next) => {
   const dog = { name: rnd_name(getRandomInt(7)), age: getRandomInt(20), rasa: rnd_name(getRandomInt(10)) };
 
@@ -23,7 +22,6 @@ router.get("/wa", (req, res, next) => {
     });
   });
 });
-
 
 router.get("/get", (req, res, next) => {
   db.getConnection((err, conn) => {

@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello world.</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
     <script src="/static/js/ws.js"></script>
-</body>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/templates.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="msger">
+      <header class="msger-header">
+        <div class="msger-header-title">
+          <i class="fas fa-comment-alt"></i> Stupid Bot
+        </div>
+        <div class="msger-header-options">
+          <span><i class="fas fa-cog"></i></span>
+        </div>
+      </header>
+      <main class="msger-chat"></main>
+      <div class="msger-inputarea" onsubmit="send_message_handle(e)">
+        <input
+          type="text"
+          class="msger-input"
+          placeholder="Enter your message..."
+        />
+        <button
+          onclick="send_message_handle(this)"
+          type="button"
+          id="btn_send"
+          class="msger-send-btn"
+        >
+          Send
+        </button>
+      </div>
+    </section>
+  </body>
 </html>
